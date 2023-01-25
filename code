@@ -1,0 +1,39 @@
+from art import *
+from replit import clear
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+print(logo)    
+def caesar(text, shift, direction):
+    cipher_text = ""
+    for letter in text:
+        if letter in alphabet:
+            position = alphabet.index(letter)
+            if direction == "en":
+                new_position = position + shift
+            elif direction == "de":
+                new_position = position - shift
+            cipher_text += alphabet[new_position]
+        else:
+            cipher_text += letter
+                                      
+    print(f"\nThe {direction}d text is:: {cipher_text}")
+
+continu = True  ##breaks the loop when negated
+while continu:
+    
+    direction = input("\nType 'en' to encode/encrypt, type 'de' to decode/decrypt:\n")
+    text = input("\nType your message:\n")
+    shift = int(input("\nType the shift number:"))
+
+    clear()
+    
+    shift %= 26
+    caesar(text, shift, direction)
+    
+    again = input(" \nType 'y' if you want to go again. Otherwise type 'n': ").lower()
+    print(again)
+    if again == 'n':
+        continu = False   ## here
+        print("GOODbye!")
+   
